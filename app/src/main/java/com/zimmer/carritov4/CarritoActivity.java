@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,17 +51,27 @@ public class CarritoActivity extends AppCompatActivity {
 
         // Botón "Comprar"
         btnComprar.setOnClickListener(v -> {
-            // Guardar los productos comprados en el historial de ventas
+            // Obtener los productos del carrito
             ArrayList<Producto> productosComprados = new ArrayList<>(CarritoSingleton.getInstance().getProductos());
 
-            // Guardar el historial en memoria (o en base de datos si lo prefieres)
+            // Verificar si el carrito está vacío
+            if (productosComprados.isEmpty()) {
+                Toast.makeText(CarritoActivity.this, "El carrito está vacío, no se puede realizar la compra.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Guardar los productos comprados en el historial de ventas
             for (Producto producto : productosComprados) {
+                // Agregar cada venta a Firebase
                 agregarVentaAFirebase(producto.getNombre(), producto.getPrecio());
             }
 
             // Limpiar el carrito
-            CarritoSingleton.getInstance().getProductos().clear();
+            CarritoSingleton.getInstance().clear();
             adapter.notifyDataSetChanged();
+
+            // Mostrar mensaje de éxito
+            Toast.makeText(CarritoActivity.this, "Compra realizada con éxito.", Toast.LENGTH_SHORT).show();
         });
     }
 
