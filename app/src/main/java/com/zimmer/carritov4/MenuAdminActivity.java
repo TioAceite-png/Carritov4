@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -124,15 +125,19 @@ public class MenuAdminActivity extends AppCompatActivity {
             finish();
         });
 
-        // Acción para mostrar el historial de ventas
         btnHistorial.setOnClickListener(v -> {
-            if (listViewHistorial.getVisibility() == View.GONE) {
-                listViewHistorial.setVisibility(View.VISIBLE); // Mostrar historial
-                obtenerVentasDeFirebase();  // Cargar las ventas desde Firebase
+            // Obtener la referencia al layout del historial
+            LinearLayout layoutHistorial = findViewById(R.id.layoutHistorial);
+
+            // Verificar si el historial está visible o no y alternar su visibilidad
+            if (layoutHistorial.getVisibility() == View.GONE) {
+                layoutHistorial.setVisibility(View.VISIBLE); // Mostrar historial
+                obtenerVentasDeFirebase(); // Llamada para obtener las ventas y mostrarlas
             } else {
-                listViewHistorial.setVisibility(View.GONE); // Ocultar historial
+                layoutHistorial.setVisibility(View.GONE); // Ocultar historial
             }
         });
+
     }
 
     // Método para cargar productos desde Firestore y mostrarlos en el ListView
