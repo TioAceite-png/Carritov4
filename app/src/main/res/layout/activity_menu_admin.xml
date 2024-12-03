@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#9FF4C9"
+    tools:context=".MenuAdminActivity">
+
+    <!-- Campos para ingresar datos del producto -->
+    <EditText
+        android:id="@+id/editTextNombre"
+        android:layout_width="243dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/editproductostile"
+        android:hint="Nombre del producto"
+        android:paddingStart="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#757575"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextPrecio"
+        android:layout_width="243dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/editpreciostile"
+        android:hint="Precio del producto"
+        android:paddingStart="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#757575"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNombre" />
+
+    <!-- Botón para agregar producto -->
+    <Button
+        android:id="@+id/btnAgregarProducto"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Agregar"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarProducto"
+        app:layout_constraintStart_toEndOf="@+id/btnActualizarProducto"
+        app:layout_constraintTop_toBottomOf="@id/editTextPrecio" />
+
+    <!-- Botón para actualizar producto -->
+    <Button
+        android:id="@+id/btnActualizarProducto"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="16dp"
+        android:text="Actualizar "
+        app:layout_constraintEnd_toStartOf="@+id/btnAgregarProducto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPrecio" />
+
+    <!-- Botón para eliminar producto -->
+
+    <!-- Botón para cerrar sesión -->
+
+    <Button
+        android:id="@+id/btnEliminarProducto"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="27dp"
+        android:text="Eliminar "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAgregarProducto"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPrecio" />
+
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:backgroundTint="#37B657"
+        android:text="Cerrar Sesión"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listViewProductosAdmin" />
+
+    <!-- LisView para mostrar los datos -->
+    <ListView
+        android:id="@+id/listViewProductosAdmin"
+        android:layout_width="343dp"
+        android:layout_height="367dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:background="#020202"
+        android:backgroundTint="#92CA7E"
+        android:divider="@color/black"
+        android:dividerHeight="0.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnActualizarProducto"
+        app:layout_constraintVertical_bias="0.119"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
