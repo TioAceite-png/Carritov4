@@ -10,8 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#59B697"
         android:orientation="vertical"
-        android:background="#ECE6F8"
         android:padding="16dp">
 
         <!-- Botón para Volver -->
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="#9C27B0"
+            android:backgroundTint="#509E27"
             android:text="Volver"
             android:textColor="#FFFFFF" />
 
@@ -34,36 +34,29 @@
             android:layout_height="491dp"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
-            android:background="#D596E4"
+            android:background="#96E4CB"
             android:divider="@android:color/darker_gray"
             android:dividerHeight="1dp" />
 
         <!-- Total y Comprar -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="38dp"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Total: $ 0"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
             <Button
                 android:id="@+id/btnComprar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#9C27B0"
+                android:layout_width="194dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="88dp"
+                android:backgroundTint="#1E9B64"
                 android:text="Comprar"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

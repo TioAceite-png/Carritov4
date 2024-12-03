@@ -8,12 +8,45 @@
     android:background="#9FF4C9"
     tools:context=".MenuAdminActivity">
 
+    <!-- Botón para ver historial -->
+    <Button
+        android:id="@+id/btnHistorial"
+        android:layout_width="81dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#F0EEEE"
+        android:drawableLeft="@drawable/file4"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <!-- Contenedor para el ListView de historial -->
+    <LinearLayout
+        android:id="@+id/layoutHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/btnHistorial"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- ListView de historial -->
+        <ListView
+            android:id="@+id/listViewHistorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
     <!-- Campos para ingresar datos del producto -->
     <EditText
         android:id="@+id/editTextNombre"
         android:layout_width="243dp"
         android:layout_height="48dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/editproductostile"
         android:hint="Nombre del producto"
         android:paddingStart="16dp"
@@ -22,8 +55,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/btnHistorial" />
 
     <EditText
         android:id="@+id/editTextPrecio"
@@ -40,73 +72,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextNombre" />
 
-    <!-- Botón para agregar producto -->
+    <!-- Botones para agregar, actualizar y eliminar productos -->
     <Button
         android:id="@+id/btnAgregarProducto"
         android:layout_width="116dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:text="Agregar"
         app:layout_constraintEnd_toStartOf="@+id/btnEliminarProducto"
         app:layout_constraintStart_toEndOf="@+id/btnActualizarProducto"
         app:layout_constraintTop_toBottomOf="@id/editTextPrecio" />
 
-    <!-- Botón para actualizar producto -->
     <Button
         android:id="@+id/btnActualizarProducto"
         android:layout_width="116dp"
         android:layout_height="48dp"
-        android:layout_marginStart="27dp"
         android:layout_marginTop="16dp"
-        android:text="Actualizar "
+        android:text="Actualizar"
         app:layout_constraintEnd_toStartOf="@+id/btnAgregarProducto"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPrecio" />
-
-    <!-- Botón para eliminar producto -->
-
-    <!-- Botón para cerrar sesión -->
+        app:layout_constraintTop_toBottomOf="@id/editTextPrecio" />
 
     <Button
         android:id="@+id/btnEliminarProducto"
         android:layout_width="116dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="27dp"
-        android:text="Eliminar "
+        android:text="Eliminar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnAgregarProducto"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPrecio" />
+        app:layout_constraintTop_toBottomOf="@id/editTextPrecio" />
 
+    <!-- Botón para cerrar sesión -->
     <Button
         android:id="@+id/btnCerrarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="#37B657"
         android:text="Cerrar Sesión"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listViewProductosAdmin" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- LisView para mostrar los datos -->
+    <!-- ListView para mostrar los productos -->
     <ListView
         android:id="@+id/listViewProductosAdmin"
         android:layout_width="343dp"
         android:layout_height="367dp"
         android:layout_marginStart="34dp"
         android:layout_marginEnd="34dp"
+        android:layout_marginBottom="16dp"
         android:background="#020202"
         android:backgroundTint="#92CA7E"
         android:divider="@color/black"
         android:dividerHeight="0.5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnActualizarProducto"
-        app:layout_constraintVertical_bias="0.119"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

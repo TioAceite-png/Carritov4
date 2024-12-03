@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
@@ -22,8 +23,8 @@ import java.util.List;
 public class MenuAdminActivity extends AppCompatActivity {
 
     private EditText editTextNombre, editTextPrecio;
-    private Button btnAgregarProducto, btnActualizarProducto, btnEliminarProducto, btnCerrarSesion;
-    private ListView listViewProductosAdmin;
+    private Button btnAgregarProducto, btnActualizarProducto, btnEliminarProducto, btnCerrarSesion, btnHistorial;
+    private ListView listViewProductosAdmin, listViewHistorial;
 
     private FirebaseFirestore db; // Para trabajar con Firestore
     private String selectedProductId = ""; // Para almacenar el ID del producto seleccionado
@@ -40,7 +41,9 @@ public class MenuAdminActivity extends AppCompatActivity {
         btnActualizarProducto = findViewById(R.id.btnActualizarProducto);
         btnEliminarProducto = findViewById(R.id.btnEliminarProducto);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        btnHistorial = findViewById(R.id.btnHistorial);
         listViewProductosAdmin = findViewById(R.id.listViewProductosAdmin);
+        listViewHistorial = findViewById(R.id.listViewHistorial);
 
         // Inicializar Firestore
         db = FirebaseFirestore.getInstance();
@@ -120,6 +123,16 @@ public class MenuAdminActivity extends AppCompatActivity {
             startActivity(new Intent(MenuAdminActivity.this, LoginsActivity.class));
             finish();
         });
+
+        // Acción para mostrar el historial de ventas
+        btnHistorial.setOnClickListener(v -> {
+            if (listViewHistorial.getVisibility() == View.GONE) {
+                listViewHistorial.setVisibility(View.VISIBLE); // Mostrar historial
+                obtenerVentasDeFirebase();  // Cargar las ventas desde Firebase
+            } else {
+                listViewHistorial.setVisibility(View.GONE); // Ocultar historial
+            }
+        });
     }
 
     // Método para cargar productos desde Firestore y mostrarlos en el ListView
@@ -127,14 +140,14 @@ public class MenuAdminActivity extends AppCompatActivity {
         db.collection("productos")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                            List<String> productDetails = new ArrayList<>();
-                            for (DocumentSnapshot document : queryDocumentSnapshots) {
-                                String name = document.getString("nombre");
-                                String price = document.getString("precio");
-                                if (name != null && price != null) {
-                                    productDetails.add(name + " - $" + price);
-                                }
-                            }
+                    List<String> productDetails = new ArrayList<>();
+                    for (DocumentSnapshot document : queryDocumentSnapshots) {
+                        String name = document.getString("nombre");
+                        String price = document.getString("precio");
+                        if (name != null && price != null) {
+                            productDetails.add(name + " - $" + price);
+                        }
+                    }
                     // Crear el ArrayAdapter y asignarlo al ListView
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(MenuAdminActivity.this,
                             android.R.layout.simple_list_item_1, productDetails);
@@ -148,5 +161,27 @@ public class MenuAdminActivity extends AppCompatActivity {
                     });
                 })
                 .addOnFailureListener(e -> Toast.makeText(MenuAdminActivity.this, "Error al cargar productos", Toast.LENGTH_SHORT).show());
+    }
+
+    // Método para obtener las ventas de Firebase y mostrarlas en el ListView
+    private void obtenerVentasDeFirebase() {
+        db.collection("ventas")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        ArrayList<String> ventas = new ArrayList<>();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            String nombreProducto = document.getString("nombreProducto");
+                            String precioProducto = document.getString("precioProducto");
+                            ventas.add("Producto: " + nombreProducto + "\nPrecio: " + precioProducto);
+                        }
+
+                        // Mostrar las ventas en el ListView
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ventas);
+                        listViewHistorial.setAdapter(adapter);
+                    } else {
+                        Toast.makeText(MenuAdminActivity.this, "Error al obtener las ventas.", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
