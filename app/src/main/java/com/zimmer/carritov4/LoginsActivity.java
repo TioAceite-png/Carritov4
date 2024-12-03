@@ -36,7 +36,7 @@ public class LoginsActivity extends AppCompatActivity {
         botonAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(LoginsActivity.this, MenuAdminActivity.class);
+                Intent intent= new Intent(LoginsActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
