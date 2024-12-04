@@ -6,10 +6,11 @@ Este proyecto implementa una aplicación Android conectada a Firebase y un brók
 
 ## **Características Principales**
 
-### 1. **Gestión de Productos:**
+1. **Gestión de Productos:**
    - Formulario para agregar, actualizar y eliminar productos.
-     #### **Agregar Producto**
-   Formulario para añadir nuevos productos al sistema.
+     
+   #### **Agregar Producto**
+      Formulario para añadir nuevos productos al sistema.
       ![Agregar Producto](screenshots/agregar_producto.png)
 
    #### **Actualizar Producto**
