@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "110989939409",
+    "project_id": "proyecto-carrito-9f177",
+    "storage_bucket": "proyecto-carrito-9f177.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110989939409:android:b540f373d7233e3273abf0",
+        "android_client_info": {
+          "package_name": "com.zimmer.carritov3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4kms23aN3jTgzuPVz0lMlXgQB8VqRNrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110989939409:android:6636e663a3ce6fd773abf0",
+        "android_client_info": {
+          "package_name": "com.zimmer.carritov4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4kms23aN3jTgzuPVz0lMlXgQB8VqRNrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
