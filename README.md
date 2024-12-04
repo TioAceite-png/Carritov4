@@ -5,14 +5,33 @@ Este proyecto implementa una aplicación Android conectada a Firebase y un brók
 ---
 
 ## **Características Principales**
-1. **Gestión de Productos:**
+
+### 1. **Gestión de Productos:**
    - Formulario para agregar, actualizar y eliminar productos.
+     #### **Agregar Producto**
+   Formulario para añadir nuevos productos al sistema.
+      ![Agregar Producto](screenshots/agregar_producto.png)
+
+   #### **Actualizar Producto**
+   Interfaz para modificar los datos de un producto existente.
+      ![Actualizar Producto](screenshots/actualizar_producto.png)
+
+   #### **Eliminar Producto**
+   Pantalla que muestra cómo eliminar un producto.
+      ![Eliminar Producto](screenshots/eliminar_producto.png)
+      
    - Los productos se almacenan en una base de datos externa en Firebase Firestore.
+      ![Datos almacenados](screenshots/datos_firebase.png)
+     
    - Visualización en tiempo real de los productos en un `ListView`.
+      ![visualizacion datos](screenshots/listview.png)
 
 2. **Historial de Ventas:**
    - Los productos comprados se almacenan en Firestore como ventas.
+     ![Datos Ventas](screenshots/ventas.png)
+     
    - Visualización de un historial en el `AdminMenuActivity`.
+     ![Historial Admin](screenshots/menu_admin.png)
 
 3. **Conexión a un Bróker MQTT:**
    - Envío de mensajes desde un formulario en la aplicación a un bróker MQTT.
@@ -20,7 +39,10 @@ Este proyecto implementa una aplicación Android conectada a Firebase y un brók
 
 4. **Firebase Integration:**
    - Conexión al servicio Firestore para gestionar los datos de productos y ventas.
-
+   ![plugins](screenshots/plugins.png)
+   ![dependencias](screenshots/dependencias.png)
+   - datos productos y ventas.
+   ![productos ventas](screenshots/tablas.png)
 ---
 
 ## **Requisitos del Sistema**
@@ -43,3 +65,7 @@ Este proyecto implementa una aplicación Android conectada a Firebase y un brók
    ```gradle
    implementation 'com.google.firebase:firebase-firestore:24.9.0'
    implementation 'com.google.firebase:firebase-analytics:21.4.0'
+
+---
+
+//Proyecto realizado por Sergio Rojas
