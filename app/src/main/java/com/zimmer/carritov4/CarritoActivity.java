@@ -32,17 +32,17 @@ public class CarritoActivity extends AppCompatActivity {
         btnComprar = findViewById(R.id.btnComprar);
         btnVolver = findViewById(R.id.btnVolverT);
 
-        // Obtener la lista de productos desde el singleton
+        // Obtener los productos desde el singleton
         ArrayList<Producto> productos = CarritoSingleton.getInstance().getProductos();
 
-        // Adaptador modificado para mostrar nombre y precio
+        // Crear una lista de String para el nombre y el precio
         ArrayList<String> productosStr = new ArrayList<>();
         for (Producto producto : productos) {
-            // Mostrar solo el nombre y precio del producto
+            // Combinar nombre y precio para cada producto en el carrito
             productosStr.add(producto.getNombre() + " - $" + producto.getPrecio());
         }
 
-        // Inicializar el adaptador con la lista de productos como Strings
+        // Usamos ArrayAdapter para vincular los datos al ListView
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, productosStr);
         listViewCarrito.setAdapter(adapter);
 
@@ -79,8 +79,8 @@ public class CarritoActivity extends AppCompatActivity {
     private void agregarVentaAFirebase(String nombreProducto, String precioProducto) {
         // Crear un objeto de venta
         HashMap<String, String> venta = new HashMap<>();
-        venta.put("nombreProducto", nombreProducto);
-        venta.put("precioProducto", precioProducto);
+        venta.put("nombre", nombreProducto);
+        venta.put("precio", precioProducto);
 
         // Obtener la referencia a la colección "ventas"
         FirebaseFirestore db = FirebaseFirestore.getInstance();
